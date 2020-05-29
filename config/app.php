@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //ext-packages
+        Davmixcool\MetaManager\MetaServiceProvider::class,
     ],
 
     /*

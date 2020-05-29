@@ -3,12 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Directing Template">
-    <meta name="keywords" content="Directing, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cari Jasa</title>
-
+    @include('meta::manager', [
+            'title'         => 'Cari Jasa',
+            'description'   => 'Cari jasa yang Anda butuhkan dengan mudah dan lengkap',
+            'image'         => '',
+            'keywords'      => 'Cari Jasa, Temukan Jasa, Situs Cari Jasa, Daftar Jasa, Cari Jasa Mudah, Cari Jasa Lengkap',
+        ])
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
@@ -46,19 +49,7 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="./index.html">Rumah</a></li>
-                                <li><a href="./listing.html">Listing</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./about.html">About</a></li>
-                                        <li><a href="./listing-details.html">Listing Details</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">Blog</a></li>
-                                <li><a href="#">Shop</a></li>
-                            </ul>
+                                 </ul>
                         </nav>
                         <div class="header__menu__right">
                             <a href="#" class="primary-btn"><i class="fa fa-plus"></i>Daftarkan Jasa</a>
@@ -120,11 +111,10 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="work__item">
-                        <div class="work__item__number">01.</div>
+                        <div class="work__item__number">1.</div>
                         <img src="{{url('directing/directing/img/work/work-1.png')}}" alt="">
                         <h5>Cari Jasa</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore.</p>
+                        <p>Cari Jasa sesuai yang Anda butuhkan, saat ini kami sedang membuka pendaftaran sebesar-besarnya demi memenuhi database.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -132,8 +122,7 @@
                         <div class="work__item__number">02.</div>
                         <img src="{{url('directing/directing/img/work/work-2.png')}}" alt="">
                         <h5>Tentukan Kota</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore.</p>
+                        <p>Cari jasa yang Anda butuhkan disekitar Anda, supaya dekat dan mudah :)</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -141,8 +130,7 @@
                         <div class="work__item__number">03.</div>
                         <img src="{{url('directing/directing/img/work/work-3.png')}}" alt="">
                         <h5>Hubungi WhatsApp</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore.</p>
+                        <p>Tidak perlu ribet daftar ini itu, cukup cari lalu hubungi lewat WhatsApp atau nomor telfon.</p>
                     </div>
                 </div>
             </div>
@@ -158,24 +146,19 @@
                         <div class="footer__about__logo">
                             <a href="./index.html"><img src="img/footer-logo.png" alt=""></a>
                         </div>
-                        <p>Challenging the way things have always been done can lead to creative new options that reward
-                            you.</p>
+                        <p>Membantu pekerja jasa, mempermudah pencari jasa.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 offset-lg-1 col-md-6">
                     <div class="footer__address">
                         <ul>
                             <li>
-                                <span>Call Us:</span>
-                                <p>(+12) 345-678-910</p>
+                                <span>Telpon:</span>
+                                <p>0813 9355 8430</p>
                             </li>
                             <li>
                                 <span>Email:</span>
-                                <p>info.colorlib@gmail .com</p>
-                            </li>
-                            <li>
-                                <span>Fax:</span>
-                                <p>(+12) 345-678-910</p>
+                                <p>omandotkom@gmail.com</p>
                             </li>
                             <li>
                                 <span>Connect Us:</span>
