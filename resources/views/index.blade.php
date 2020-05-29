@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cari Jasa</title>
     @include('meta::manager', [
-            'title'         => 'Cari Jasa',
-            'description'   => 'Cari jasa yang Anda butuhkan dengan mudah dan lengkap',
-            'image'         => '',
-            'keywords'      => 'Cari Jasa, Temukan Jasa, Situs Cari Jasa, Daftar Jasa, Cari Jasa Mudah, Cari Jasa Lengkap',
-        ])
+    'title' => 'Cari Jasa',
+    'description' => 'Cari jasa yang Anda butuhkan dengan mudah dan lengkap',
+    'image' => '',
+    'keywords' => 'Cari Jasa, Temukan Jasa, Situs Cari Jasa, Daftar Jasa, Cari Jasa Mudah, Cari Jasa Lengkap',
+    ])
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
@@ -27,9 +27,37 @@
     <link rel="stylesheet" href="{{url('directing/directing/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('directing/directing/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('directing/directing/css/style.css')}}" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{url('directing/directing/js/jquery-3.3.1.min.js')}}"></script>
 </head>
 
 <body>
+    <script>
+        $(document).ready(function() {
+            $("#provinsi").change(function() {
+                var GetKotaUrl = "{{route('carikota')}}".concat("/").concat($(this).val());
+                $("#kota").prop("disable",true);
+                axios.get(GetKotaUrl)
+                    .then(function(response) {
+                        // handle success
+                        $("#kota").empty();
+                        $.each(response.data, function(name,data){
+                            $('#kota').append('<option value="foo" selected="selected">Foo</option>');
+                            //console.log(data.name);
+                        });
+                    })
+                    .catch(function(error) {
+                        // handle error
+                        console.log(error);
+                    })
+                    .then(function() {
+                        // always executed
+                        $("#kota").prop("disable",false);
+                    });
+
+            });
+        });
+    </script>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -49,7 +77,7 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="./index.html">Rumah</a></li>
-                                 </ul>
+                            </ul>
                         </nav>
                         <div class="header__menu__right">
                             <a href="#" class="primary-btn"><i class="fa fa-plus"></i>Daftarkan Jasa</a>
@@ -76,11 +104,20 @@
                             <form action="#">
                                 <input type="text" placeholder="Jasa Cuci Sepatu">
                                 <div class="select__option">
-                                    <select>
-                                        <option value="">Pilih Kota</option>
+                                    <select id="provinsi" style="display: none;">
+                                        <option data-display="Pilih Provinsi">Pilih Provinsi</option>
+                                        @foreach($provinsi as $p)
+                                        <option value="{{$p->id}}" class="option">{{$p->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                                <button type="submit"><i class="fa fa-search"></i>Cari</button>
+                                <div class="select__option">
+                                    <select id="kota" style="display: none;">
+                                        <option data-display="Pilih Kota">Pilih Kota</option>
+                                    </select>
+
+                                </div>
+                                <button type="submit"><i class="fa fa-search"></i> Cari Sekarang</button>
                             </form>
                         </div>
                         <ul class="hero__categories__tags">
@@ -96,7 +133,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Work Section Begin -->
     <section class="work spad">
         <div class="container">
@@ -136,7 +173,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
@@ -187,9 +224,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        <div class="footer__copyright__text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>
+                                    document.write(new Date().getFullYear());
+                                </script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
                         </div>
                         <div class="footer__copyright__links">
                             <a href="#">Terms</a>
@@ -204,7 +246,7 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="{{url('directing/directing/js/jquery-3.3.1.min.js')}}"></script>
+
     <script src="{{url('directing/directing/js/bootstrap.min.js')}}"></script>
     <script src="{{url('directing/directing/js/jquery.nice-select.min.js')}}"></script>
     <script src="{{url('directing/directing/js/jquery-ui.min.js')}}"></script>
