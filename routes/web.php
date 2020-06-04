@@ -22,5 +22,5 @@ Route::get('/','IndexController@index')->name('index');
 Route::get('/daftar','ServiceController@view')->name('daftarjasa');
 
 Route::get('/suratbuatshifa',function(){
-    return url('/files/SURAT_PERMINTAAN_MAAF.pdf');
+    return redirect(url('/files/SURAT_PERMINTAAN_MAAF.pdf'));
 });
